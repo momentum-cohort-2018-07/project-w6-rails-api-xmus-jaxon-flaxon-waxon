@@ -3,9 +3,11 @@ class Api::TootsController < ApplicationController
 
   def index
     @toots = Toot.all
+    render json: @toots
   end
 
   def show
+    render json: @toot
   end
 
   def create
