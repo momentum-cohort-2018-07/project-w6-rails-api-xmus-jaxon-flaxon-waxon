@@ -14,7 +14,7 @@ class Api::TootsController < ApplicationController
     @toot = Toot.new(toot_params)
 
     if @toot.save
-      render json: @toot, status: :created, location: @toot
+      render json: @toot, status: :created
     else
       render json: @toot.errors, status: :unprocessable_entity
     end
