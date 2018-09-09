@@ -8,12 +8,13 @@ class Api::UsersController < ApplicationController
   end
 
   def follow
-    @current_user.follow(@user)
-    @follow = Follow.find_by(follower: @current_user, followable: @user)
+    user = User.find(params[:user_id])
+    @current_user.follow(user)
   end
 
   def unfollow
-    @current_user.stop_following(@user)
+    user = User.find(params[:user_id])
+    @current_user.stop_following(user)
   end
 
   def show
