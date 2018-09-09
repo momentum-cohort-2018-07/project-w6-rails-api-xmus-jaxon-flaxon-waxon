@@ -40,7 +40,11 @@ class Api::UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
+    if current_user == @user
+      @user.destroy
+    else
+      render json: @user.errors, status: :unprocessable_entity
+    end
   end
 
   private
