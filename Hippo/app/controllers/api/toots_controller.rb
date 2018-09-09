@@ -2,7 +2,8 @@ class Api::TootsController < ApplicationController
   before_action :set_toot, only: [:show, :update, :destroy]
 
   def index
-    @toots = Toot.all
+    @user = User.find(params[:user_id])
+    @toots = @user.toots
     render json: @toots
   end
 
